@@ -9,4 +9,6 @@ class nlcloai_sanpham extends Model
 {
     use HasFactory;
     protected $table="nlc_loaisanpham";
+    protected $fillable = ['nlcmaloai', 'nlctenloai', 'nlctrangthai'];
+    
 }

@@ -29,10 +29,10 @@
                         <div class="mb-3 row">
                             <label for="nlctrangthai" class="col-sm-2 col-form-label">trang thai</label>
                             <div class="col-sm-10">
-                              <input type="radio"  id="nlctrangthai1" name="nlctrangthai" value="1" checked>
+                              <input type="radio"  id="nlctrangthai1" name="nlctrangthai" value='0'>
                               <label for="nlctrangthai">hien thi</label>
                                 &nbsp;
-                              <input type="radio"  id="nlctrangthai0" name="nlctrangthai" value="0">
+                              <input type="radio"  id="nlctrangthai0" name="nlctrangthai" value='1'>
                               <label for="nlctrangthai0">khoa</label>
                             </div>
                         </div>

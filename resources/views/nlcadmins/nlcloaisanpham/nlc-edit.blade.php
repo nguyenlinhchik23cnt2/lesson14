@@ -6,7 +6,7 @@
 
         <div class="col">
             
-            <form action="route{{('nlcadmins.nlc-loaisanpham.nlceditsubmit')}}" method="post">
+            <form action="" method="POST">
                 @csrf
                 <input type="hidden" name="id"id="id" value="{{$nlcloaisanpham->id}}">
                 <div class="card">

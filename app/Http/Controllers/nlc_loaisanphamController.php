@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\nlcloai_sanpham; 
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
+use Illuminate\Validation;
 class nlc_loaisanphamController extends Controller
 {
     //
@@ -20,13 +21,15 @@ class nlc_loaisanphamController extends Controller
     //create submit
     public function nlccreatesubmit( Request $request)
     {
+        $request->validate([
+            'nlcmaloai'=>'required',
+            'nlctenloai'=>'required',
+            'nlctrangthai'=>'required|in:0, 1',
+        ]);
         // ghi du lieu xuong db
-        $nlcloaisanpham =new nlcloai_sanpham;
-        $nlcloaisanpham->nlcmaloai =$nlcmaloai;
-        $nlcloaisanpham->nlctenloai =$nltenloai;
-        $nlcloaisanpham->nlctrangthai =$nltrangthai;
+        $data = $request -> only('nlcmaloai', 'nlctenloai', 'nlctrangthai');
 
-        $nlcloaisanpham ->save();
+        nlcloai_sanpham::create($data);
         return redirect()->route('nlcadmin.nlcloaisanpham');
     }
     //edit
@@ -35,14 +38,15 @@ class nlc_loaisanphamController extends Controller
         $nlcloaisanpham =nlcloai_sanpham::find($id);
         return view('nlcadmins.nlcloaisanpham.nlc-edit',['nlcloaisanpham'=>$nlcloaisanpham]);
     }
-    public function nlceditsubmit(Request $request)
+    public function nlceditsubmit(Request $request, $id)
     {
-        $nlcloaisanpham =nlcloai_sanpham::find($request->id);
-        $nlcloaisanpham->nlcmaloai =$nlcmaloai;
-        $nlcloaisanpham->nlctenloai =$nltenloai;
-        $nlcloaisanpham->nlctrangthai =$nltrangthai;
-
-        $nlcloaisanpham ->save();
+        $request->validate([
+            'nlcmaloai'=>'required',
+            'nlctenloai'=>'required',
+            'nlctrangthai'=>'required|in:0, 1',
+        ]);
+        $data = $request -> except('_token');
+        nlcloai_sanpham::where('id', $id)->update($data);
         return redirect()->route('nlcadmin.nlcloaisanpham');
     }
     //delete
@@ -52,4 +56,5 @@ class nlc_loaisanphamController extends Controller
         $nlcloaisanpham->delete();
         return redirect()->route('nlcadmin.nlcloaisanpham');
     }
+    
 }

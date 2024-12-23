@@ -6,6 +6,8 @@
     <li class="list-group-item">
         <a href="/nlc-admins/nlc-loaisanpham">loai san pham</a>
     </li>
-    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">
+        <a href="/nlc-admins/nlc-sanpham">ds san pham</a>
+    </li>
     <li class="list-group-item">And a fifth one</li>
   </ul>
